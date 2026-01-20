@@ -18,13 +18,13 @@ body{
   padding:15px;
 }
 
-/* LOGO */
+/* HEADER */
 .logo{
   display:flex;
   align-items:center;
   justify-content:center;
   gap:10px;
-  margin-bottom:20px;
+  margin-bottom:15px;
 }
 .logo img{
   width:45px;
@@ -32,49 +32,55 @@ body{
   border-radius:50%;
 }
 .logo h1{
-  font-size:20px;
   margin:0;
+  font-size:20px;
 }
 
-/* PRODUCTS */
-.products{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+/* SLIDER */
+.slider-container{
+  overflow:hidden;
   margin-bottom:20px;
 }
-
-.product{
+.slider{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+.slider::-webkit-scrollbar{
+  display:none;
+}
+.slide{
+  min-width:85%;
+  scroll-snap-align:center;
+  border-radius:15px;
+  overflow:hidden;
+  position:relative;
   border:2px solid #eee;
-  border-radius:12px;
-  padding:8px;
-  text-align:center;
   cursor:pointer;
   transition:0.3s;
 }
-
-.product.active{
+.slide.active{
   border-color:#000;
 }
-
-.product img{
+.slide img{
   width:100%;
-  border-radius:10px;
-  transition:0.3s;
+  display:block;
+  transition:0.4s;
 }
-
-.product:hover img{
+.slide:hover img{
   transform:scale(1.08);
 }
-
-.product label{
-  display:block;
-  margin-top:6px;
-  font-weight:bold;
-}
-
-.product input{
-  display:none;
+.slide span{
+  position:absolute;
+  bottom:10px;
+  right:10px;
+  background:rgba(0,0,0,0.7);
+  color:#fff;
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:14px;
 }
 
 /* FORM */
@@ -86,13 +92,12 @@ input,button{
   border:1px solid #ddd;
   font-size:14px;
 }
-
 button{
   background:#000;
   color:#fff;
   font-size:16px;
-  cursor:pointer;
   border:none;
+  cursor:pointer;
 }
 
 /* REVIEWS */
@@ -140,38 +145,37 @@ button{
 
 <div class="container">
 
+  <!-- HEADER -->
   <div class="logo">
     <img src="logo.jpg">
     <h1>Lamsa Style</h1>
   </div>
 
-  <!-- PRODUCTS -->
-  <div class="products">
+  <!-- INSTAGRAM SLIDER -->
+  <div class="slider-container">
+    <div class="slider">
 
-    <div class="product" onclick="selectProduct(this,'Model 1')">
-      <img src="img1.jpg">
-      <label>Model 1</label>
-      <input type="radio" name="product">
+      <div class="slide" onclick="selectProduct(this,'Model 1')">
+        <img src="img1.jpg">
+        <span>Model 1</span>
+      </div>
+
+      <div class="slide" onclick="selectProduct(this,'Model 2')">
+        <img src="img2.jpg">
+        <span>Model 2</span>
+      </div>
+
+      <div class="slide" onclick="selectProduct(this,'Model 3')">
+        <img src="img3.jpg">
+        <span>Model 3</span>
+      </div>
+
+      <div class="slide" onclick="selectProduct(this,'Model 4')">
+        <img src="img4.jpg">
+        <span>Model 4</span>
+      </div>
+
     </div>
-
-    <div class="product" onclick="selectProduct(this,'Model 2')">
-      <img src="img2.jpg">
-      <label>Model 2</label>
-      <input type="radio" name="product">
-    </div>
-
-    <div class="product" onclick="selectProduct(this,'Model 3')">
-      <img src="img3.jpg">
-      <label>Model 3</label>
-      <input type="radio" name="product">
-    </div>
-
-    <div class="product" onclick="selectProduct(this,'Model 4')">
-      <img src="img4.jpg">
-      <label>Model 4</label>
-      <input type="radio" name="product">
-    </div>
-
   </div>
 
   <!-- FORM -->
@@ -201,9 +205,8 @@ let selectedProduct = "";
 
 // اختيار الموديل
 function selectProduct(el,model){
-  document.querySelectorAll('.product').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
   el.classList.add('active');
-  el.querySelector('input').checked = true;
   selectedProduct = model;
 }
 
@@ -215,7 +218,7 @@ function sendOrder(){
   let address = document.getElementById("address").value;
 
   if(!name || !phone || !selectedProduct){
-    alert("عمر المعلومات كاملة");
+    alert("عمر المعلومات كاملة واختار موديل");
     return;
   }
 
@@ -230,7 +233,7 @@ function sendOrder(){
   window.open("https://wa.me/212719998316?text=" + msg);
 }
 
-// إشعار الطلب
+// إشعار وهمي
 setTimeout(()=>{
   document.getElementById("notify").style.display="block";
   setTimeout(()=>{
