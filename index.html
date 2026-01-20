@@ -1,171 +1,142 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Lamsa Style – متجر إكسسوارات فخم بالمغرب">
-
 <title>Lamsa Style</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:#fff;
-color:#111;
-direction:rtl;
+background:#f6f6f6;
 }
 
-/* HEADER */
 header{
+background:#fff;
+padding:15px;
 display:flex;
 align-items:center;
-justify-content:center;
 gap:10px;
-padding:20px;
-border-bottom:1px solid #eee;
+box-shadow:0 2px 8px rgba(0,0,0,.1);
 }
-header img{
+
+.logo{
 width:50px;
 height:50px;
 border-radius:50%;
 object-fit:cover;
 }
-header h1{
-font-size:22px;
-margin:0;
+
+h1{margin:0;font-size:20px}
+
+.slider{
+display:flex;
+overflow-x:auto;
+gap:10px;
+padding:15px;
+scroll-snap-type:x mandatory;
 }
 
-/* SECTIONS */
-section{
-padding:20px;
-}
-
-/* IMAGES */
-.gallery img{
-width:100%;
-border-radius:14px;
-margin-bottom:15px;
-}
-
-/* PACK */
-.pack{
-border:1px solid #eee;
+.slider img{
+width:80%;
 border-radius:16px;
-padding:20px;
-text-align:center;
-box-shadow:0 5px 20px rgba(0,0,0,.05);
-}
-.pack h2{
-margin:0 0 10px;
-}
-.price{
-font-size:26px;
-font-weight:bold;
-margin:10px 0;
+scroll-snap-align:center;
+transition:.4s;
 }
 
-/* WHATSAPP BUTTON */
-.whatsapp-btn{
-display:block;
-width:90%;
-max-width:400px;
-margin:20px auto;
-padding:16px;
-background:linear-gradient(135deg,#25D366,#1ebe5d);
-color:#fff;
-text-align:center;
-font-size:18px;
-font-weight:bold;
-border-radius:50px;
-text-decoration:none;
-box-shadow:0 8px 20px rgba(37,211,102,.4);
-transition:.2s;
-}
-.whatsapp-btn:hover{
-transform:scale(1.05);
+.slider img:hover{
+transform:scale(1.1);
 }
 
-/* REVIEWS */
-.reviews{
+.section{
 background:#fff;
-padding:20px;
+margin:15px;
+padding:15px;
 border-radius:16px;
-margin:30px 10px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
-.review{
-margin:12px 0;
-font-size:15px;
 }
 
-/* COUNTDOWN */
-.countdown{
+.pack-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+
+.pack{
+border:2px solid #ddd;
+border-radius:14px;
+padding:10px;
 text-align:center;
-font-weight:bold;
-margin:20px;
+cursor:pointer;
 }
 
-/* FORM */
-form{
-padding:20px;
-}
-form input, form button{
-width:100%;
-padding:12px;
-margin:8px 0;
-border-radius:8px;
-border:1px solid #ccc;
-}
-form button{
+.pack input{display:none}
+.pack img{width:100%;border-radius:12px}
+.pack input:checked + img{outline:3px solid black}
+
+.price-box{
 background:#000;
 color:#fff;
-border:none;
+padding:15px;
+border-radius:14px;
+font-size:20px;
+font-weight:bold;
+text-align:center;
+margin:15px 0;
+}
+
+input,textarea{
+width:100%;
+padding:15px;
+margin:10px 0;
+border-radius:14px;
+border:1px solid #ccc;
 font-size:16px;
 }
 
-/* POPUP */
-.popup{
-position:fixed;
-bottom:20px;
-left:20px;
-background:#000;
-color:#fff;
-padding:10px 15px;
-border-radius:10px;
-display:none;
-font-size:14px;
-z-index:999;
+button{
+width:100%;
+padding:18px;
+border:none;
+border-radius:16px;
+background:black;
+color:white;
+font-size:20px;
+cursor:pointer;
 }
 
-/* STICKY WHATSAPP */
-.wa-sticky{
+.review{
+background:#f1f1f1;
+padding:12px;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+.popup{
+position:fixed;
+bottom:120px;
+right:15px;
+background:black;
+color:white;
+padding:12px 15px;
+border-radius:14px;
+font-size:14px;
+}
+
+.whatsapp{
 position:fixed;
 bottom:20px;
 right:20px;
+background:#25D366;
 width:60px;
 height:60px;
-background:#25D366;
-color:#fff;
-font-size:30px;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-box-shadow:0 8px 25px rgba(37,211,102,.5);
+font-size:30px;
+color:white;
 text-decoration:none;
-z-index:999;
-}
-
-/* FADE */
-.fade{
-opacity:0;
-transform:translateY(30px);
-transition:.6s;
-}
-.fade.show{
-opacity:1;
-transform:none;
 }
 </style>
 </head>
@@ -173,80 +144,93 @@ transform:none;
 <body>
 
 <header>
-<img src="logo.jpg" alt="Lamsa Style">
+<img src="logo.jpg" class="logo">
 <h1>Lamsa Style</h1>
 </header>
 
-<section class="gallery fade">
+<div class="slider">
 <img src="img1.jpg">
 <img src="img2.jpg">
 <img src="img3.jpg">
 <img src="img4.jpg">
-</section>
-
-<section class="pack fade">
-<h2>PACK</h2>
-<div class="price">130 درهم</div>
-
-<a href="https://wa.me/212719998316?text=سلام، بغيت نطلب PACK من Lamsa Style"
-class="whatsapp-btn">
-اطلب الآن عبر واتساب
-</a>
-</section>
-
-<div class="countdown">
-⏳ العرض ينتهي خلال: <span id="timer"></span>
 </div>
 
-<section class="reviews fade">
-<h2>آراء الزبناء</h2>
-<div class="review">⭐️⭐️⭐️⭐️⭐️ جودة زوينة بزاف – سمية</div>
-<div class="review">⭐️⭐️⭐️⭐️⭐️ Pack فخم وثمن مناسب – هاجر</div>
-<div class="review">⭐️⭐️⭐️⭐️⭐️ توصيل سريع – مريم</div>
-</section>
+<div class="section">
+<h2>اختاري Pack ديالك 💎</h2>
 
-<section class="fade">
-<form onsubmit="sendOrder(); return false;">
-<input id="name" required placeholder="الاسم">
-<input id="city" required placeholder="المدينة">
-<button type="submit">تأكيد الطلب</button>
-</form>
-</section>
+<div class="pack-grid">
+<label class="pack">
+<input type="radio" name="pack" value="PACK 1 – Bracelet" data-price="130" checked>
+<img src="img1.jpg">
+<p>PACK 1 – Bracelet</p>
+</label>
 
-<div class="popup" id="popup">🔥 شخص طلب قبل 5 دقائق</div>
+<label class="pack">
+<input type="radio" name="pack" value="PACK 2 – Necklace" data-price="180">
+<img src="img2.jpg">
+<p>PACK 2 – Necklace</p>
+</label>
 
-<a href="https://wa.me/212719998316" class="wa-sticky">💬</a>
+<label class="pack">
+<input type="radio" name="pack" value="PACK 3 – Bracelet + Ring" data-price="230">
+<img src="img3.jpg">
+<p>PACK 3 – Bracelet + Ring</p>
+</label>
+
+<label class="pack">
+<input type="radio" name="pack" value="Accessory منفصل" data-price="90">
+<img src="img4.jpg">
+<p>Accessory منفصل</p>
+</label>
+</div>
+
+<div class="price-box">
+الثمن: <span id="price">130</span> درهم
+</div>
+
+<input id="name" placeholder="الاسم">
+<input id="phone" placeholder="رقم الهاتف">
+<input id="city" placeholder="المدينة">
+<textarea id="address" placeholder="العنوان"></textarea>
+
+<button onclick="sendOrder()">تأكيد الطلب</button>
+</div>
+
+<div class="section">
+<h2>آراء الزبناء ⭐</h2>
+<div class="review">خاتم زوين بزاف 💖</div>
+<div class="review">توصيل سريع وثقة 👍</div>
+<div class="review">غادي نعاود نطلب 👌</div>
+</div>
+
+<div class="popup">🔥 شخص طلب قبل 5 دقائق</div>
+
+<a class="whatsapp" href="https://wa.me/212719998316">💬</a>
 
 <script>
-/* Countdown */
-let time=3600;
-setInterval(()=>{
-let m=Math.floor(time/60);
-let s=time%60;
-document.getElementById("timer").innerText=m+" دقيقة و "+s+" ثانية";
-time--;
-},1000);
+const packs=document.querySelectorAll('input[name="pack"]');
+const price=document.getElementById("price");
 
-/* Popup */
-setTimeout(()=>{
-document.getElementById("popup").style.display="block";
-},3000);
-
-/* Fade */
-window.addEventListener("scroll",()=>{
-document.querySelectorAll(".fade").forEach(el=>{
-if(el.getBoundingClientRect().top < window.innerHeight-50){
-el.classList.add("show");
-}
-});
+packs.forEach(p=>{
+p.addEventListener("change",()=>price.innerText=p.dataset.price);
 });
 
-/* Form to WhatsApp */
 function sendOrder(){
-let n=document.getElementById("name").value;
-let c=document.getElementById("city").value;
-let msg=`طلب جديد:%0Aالاسم: ${n}%0Aالمدينة: ${c}`;
-window.open(`https://wa.me/212719998316?text=${msg}`);
+let n=name.value;
+let ph=phone.value;
+let c=city.value;
+let a=address.value;
+let s=document.querySelector('input[name="pack"]:checked');
+
+let msg=`🛍️ طلب جديد
+👤 الاسم: ${n}
+📞 الهاتف: ${ph}
+🏙️ المدينة: ${c}
+📍 العنوان: ${a}
+📦 العرض: ${s.value}
+💰 الثمن: ${s.dataset.price} درهم`;
+
+window.open("https://wa.me/212719998316?text="+encodeURIComponent(msg));
 }
 </script>
 
