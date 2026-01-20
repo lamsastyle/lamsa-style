@@ -1,102 +1,254 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>Lamsa Style</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Lamsa Style – متجر إكسسوارات فخم بالمغرب">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      direction: rtl;
-    }
+<title>Lamsa Style</title>
 
-    h1 {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 28px;
-    }
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#fff;
+color:#111;
+direction:rtl;
+}
 
-    .card {
-      max-width: 360px;
-      margin: 30px auto;
-      background: #f9f9f9;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+/* HEADER */
+header{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+padding:20px;
+border-bottom:1px solid #eee;
+}
+header img{
+width:50px;
+height:50px;
+border-radius:50%;
+object-fit:cover;
+}
+header h1{
+font-size:22px;
+margin:0;
+}
 
-    .card h2 {
-      margin: 10px 0;
-      font-size: 20px;
-    }
+/* SECTIONS */
+section{
+padding:20px;
+}
 
-    .price {
-      color: #b79a5a;
-      font-size: 26px;
-      margin: 15px 0;
-      font-weight: bold;
-    }
+/* IMAGES */
+.gallery img{
+width:100%;
+border-radius:14px;
+margin-bottom:15px;
+}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin: 15px 0;
-    }
+/* PACK */
+.pack{
+border:1px solid #eee;
+border-radius:16px;
+padding:20px;
+text-align:center;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+.pack h2{
+margin:0 0 10px;
+}
+.price{
+font-size:26px;
+font-weight:bold;
+margin:10px 0;
+}
 
-    .gallery img {
-      width: 100%;
-      border-radius: 12px;
-      object-fit: cover;
-    }
+/* WHATSAPP BUTTON */
+.whatsapp-btn{
+display:block;
+width:90%;
+max-width:400px;
+margin:20px auto;
+padding:16px;
+background:linear-gradient(135deg,#25D366,#1ebe5d);
+color:#fff;
+text-align:center;
+font-size:18px;
+font-weight:bold;
+border-radius:50px;
+text-decoration:none;
+box-shadow:0 8px 20px rgba(37,211,102,.4);
+transition:.2s;
+}
+.whatsapp-btn:hover{
+transform:scale(1.05);
+}
 
-    .btn {
-      display: inline-block;
-      background: #000;
-      color: #fff;
-      padding: 14px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 16px;
-      margin-top: 10px;
-    }
+/* REVIEWS */
+.reviews{
+background:#fff;
+padding:20px;
+border-radius:16px;
+margin:30px 10px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+.review{
+margin:12px 0;
+font-size:15px;
+}
 
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      color: #777;
-      font-size: 14px;
-    }
-  </style>
+/* COUNTDOWN */
+.countdown{
+text-align:center;
+font-weight:bold;
+margin:20px;
+}
+
+/* FORM */
+form{
+padding:20px;
+}
+form input, form button{
+width:100%;
+padding:12px;
+margin:8px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+form button{
+background:#000;
+color:#fff;
+border:none;
+font-size:16px;
+}
+
+/* POPUP */
+.popup{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#000;
+color:#fff;
+padding:10px 15px;
+border-radius:10px;
+display:none;
+font-size:14px;
+z-index:999;
+}
+
+/* STICKY WHATSAPP */
+.wa-sticky{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+background:#25D366;
+color:#fff;
+font-size:30px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 8px 25px rgba(37,211,102,.5);
+text-decoration:none;
+z-index:999;
+}
+
+/* FADE */
+.fade{
+opacity:0;
+transform:translateY(30px);
+transition:.6s;
+}
+.fade.show{
+opacity:1;
+transform:none;
+}
+</style>
 </head>
 
 <body>
 
-  <h1>Lamsa Style</h1>
+<header>
+<img src="logo.jpg" alt="Lamsa Style">
+<h1>Lamsa Style</h1>
+</header>
 
-  <div class="card">
-    <h2>Pack Élégance (3 قطع)</h2>
+<section class="gallery fade">
+<img src="img1.jpg">
+<img src="img2.jpg">
+<img src="img3.jpg">
+<img src="img4.jpg">
+</section>
 
-    <div class="price">130 درهم</div>
+<section class="pack fade">
+<h2>PACK</h2>
+<div class="price">130 درهم</div>
 
-    <div class="gallery">
-    <img src="img1.jpg" alt="">
-    <img src="img2.jpg" alt="">
-    <img src="img3.jpg" alt="">
-    <img src="img4.jpg" alt="">
-    </div>
+<a href="https://wa.me/212719998316?text=سلام، بغيت نطلب PACK من Lamsa Style"
+class="whatsapp-btn">
+اطلب الآن عبر واتساب
+</a>
+</section>
 
-    <a class="btn" href="https://wa.me/212719998316">
-      اطلب عبر واتساب
-    </a>
-  </div>
+<div class="countdown">
+⏳ العرض ينتهي خلال: <span id="timer"></span>
+</div>
 
-  <div class="footer">
-    ✨ إكسسوارات فاخرة | Lamsa Style
-  </div>
+<section class="reviews fade">
+<h2>آراء الزبناء</h2>
+<div class="review">⭐️⭐️⭐️⭐️⭐️ جودة زوينة بزاف – سمية</div>
+<div class="review">⭐️⭐️⭐️⭐️⭐️ Pack فخم وثمن مناسب – هاجر</div>
+<div class="review">⭐️⭐️⭐️⭐️⭐️ توصيل سريع – مريم</div>
+</section>
+
+<section class="fade">
+<form onsubmit="sendOrder(); return false;">
+<input id="name" required placeholder="الاسم">
+<input id="city" required placeholder="المدينة">
+<button type="submit">تأكيد الطلب</button>
+</form>
+</section>
+
+<div class="popup" id="popup">🔥 شخص طلب قبل 5 دقائق</div>
+
+<a href="https://wa.me/212719998316" class="wa-sticky">💬</a>
+
+<script>
+/* Countdown */
+let time=3600;
+setInterval(()=>{
+let m=Math.floor(time/60);
+let s=time%60;
+document.getElementById("timer").innerText=m+" دقيقة و "+s+" ثانية";
+time--;
+},1000);
+
+/* Popup */
+setTimeout(()=>{
+document.getElementById("popup").style.display="block";
+},3000);
+
+/* Fade */
+window.addEventListener("scroll",()=>{
+document.querySelectorAll(".fade").forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight-50){
+el.classList.add("show");
+}
+});
+});
+
+/* Form to WhatsApp */
+function sendOrder(){
+let n=document.getElementById("name").value;
+let c=document.getElementById("city").value;
+let msg=`طلب جديد:%0Aالاسم: ${n}%0Aالمدينة: ${c}`;
+window.open(`https://wa.me/212719998316?text=${msg}`);
+}
+</script>
 
 </body>
 </html>
