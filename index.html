@@ -64,7 +64,7 @@ body{
 }
 
 .product:hover img{
-  transform:scale(1.05);
+  transform:scale(1.08);
 }
 
 .product label{
@@ -93,6 +93,28 @@ button{
   font-size:16px;
   cursor:pointer;
   border:none;
+}
+
+/* REVIEWS */
+.review{
+  background:#f7f7f7;
+  padding:10px;
+  border-radius:10px;
+  margin-bottom:8px;
+  font-size:14px;
+}
+
+/* NOTIFICATION */
+.notify{
+  position:fixed;
+  bottom:90px;
+  left:15px;
+  background:#000;
+  color:#fff;
+  padding:10px 14px;
+  border-radius:12px;
+  font-size:13px;
+  display:none;
 }
 
 /* WHATSAPP FLOAT */
@@ -153,14 +175,21 @@ button{
   </div>
 
   <!-- FORM -->
-  <input id="name" placeholder="الاسم">
-  <input id="phone" placeholder="الهاتف">
+  <input id="name" placeholder="الاسم الكامل">
+  <input id="phone" placeholder="رقم الهاتف">
   <input id="city" placeholder="المدينة">
   <input id="address" placeholder="العنوان">
 
   <button onclick="sendOrder()">اطلب الآن</button>
 
+  <!-- REVIEWS -->
+  <div class="review">⭐⭐⭐⭐⭐ جودة رائعة وتوصيل سريع</div>
+  <div class="review">⭐⭐⭐⭐⭐ تعامل محترم ومنتج ممتاز</div>
+
 </div>
+
+<!-- NOTIFICATION -->
+<div class="notify" id="notify">🔥 شخص طلب قبل 5 دقائق</div>
 
 <!-- WHATSAPP -->
 <a class="whatsapp" href="https://wa.me/212719998316" target="_blank">
@@ -170,6 +199,7 @@ button{
 <script>
 let selectedProduct = "";
 
+// اختيار الموديل
 function selectProduct(el,model){
   document.querySelectorAll('.product').forEach(p=>p.classList.remove('active'));
   el.classList.add('active');
@@ -177,6 +207,7 @@ function selectProduct(el,model){
   selectedProduct = model;
 }
 
+// إرسال الطلب
 function sendOrder(){
   let name = document.getElementById("name").value;
   let phone = document.getElementById("phone").value;
@@ -194,10 +225,18 @@ function sendOrder(){
     "الهاتف: " + phone + "%0A" +
     "المدينة: " + city + "%0A" +
     "العنوان: " + address + "%0A" +
-    "المنتج: " + selectedProduct;
+    "الموديل: " + selectedProduct;
 
   window.open("https://wa.me/212719998316?text=" + msg);
 }
+
+// إشعار الطلب
+setTimeout(()=>{
+  document.getElementById("notify").style.display="block";
+  setTimeout(()=>{
+    document.getElementById("notify").style.display="none";
+  },5000);
+},3000);
 </script>
 
 </body>
